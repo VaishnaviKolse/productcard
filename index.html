@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Card with Quantity</title>
+    <style>
+    .product-card1 {
+        background-color:plum;
+        width: 200px;
+        padding: 20px 10px;
+        border-radius: 10%;
+        border: 4px double black;
+        margin: 20px;
+        text-align: center;
+    }
+    .product-img{
+        width: 200px;
+        height:200px;
+        display: block;
+        margin: 10px auto;
+        border-radius:10%;
+    }
+    .btn-shop-now{
+        background-color: black;
+        color:white;
+        padding:  5px 20px;
+        border-radius: 30px;
+        border-color: gray;
+        display: block;
+        margin: 10px auto;
+    }
+    .btn-shop-now:hover {
+       box-shadow: 0px 0px 50px 20px skyblue; 
+       border-radius: 20px;
+       background-color:tomato;
+    }
+    .quantity-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+    }
+    .quantity-container button {
+        padding: 5px 10px;
+        font-size: 16px;
+    }
+    .quantity-display {
+        margin: 0 10px;
+        font-size: 16px;
+    }
+    </style>
+</head>
+<body>
+    <div class="product-card1">
+        <img src="/image/image.png" class="product-img" alt="Flower"/>
+        <p>Flower</p>
+        <p><b>Price:</b> <span id="price">100</span>/-</p>
+
+        <div class="quantity-container">
+            <button onclick="decrement()">-</button>
+            <span class="quantity-display" id="quantity">1</span>
+            <button onclick="increment()">+</button>
+        </div>
+
+        <p><b>Total Price:</b> <span id="total-price">100</span>/-</p>
+
+        <button class="btn-shop-now">Shop Now</button>
+    </div>
+
+    <script>
+        let quantity = 1;
+        const pricePerItem = 100;
+
+        function updateTotalPrice() {
+            const totalPrice = quantity * pricePerItem;
+            document.getElementById('total-price').textContent = totalPrice;
+        }
+
+        function increment() {
+            quantity++;
+            document.getElementById('quantity').textContent = quantity;
+            updateTotalPrice();
+        }
+
+        function decrement() {
+            if (quantity > 1) {
+                quantity--;
+                document.getElementById('quantity').textContent = quantity;
+                updateTotalPrice();
+            }
+        }
+    </script>
+</body>
+</html>
